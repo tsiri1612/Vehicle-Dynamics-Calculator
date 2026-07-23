@@ -1,18 +1,21 @@
-# Braking Distance Calculator 
-# Estimates braking distance using vehicle speed and road surface friction. 
+# Braking Distance Calculator
+# Estimates braking distance using vehicle speed and road surface friction.
 
-print("\nBraking Distance Calculator\n")
+print("\n" + "=" * 55)
+print("           BRAKING DISTANCE CALCULATOR")
+print("=" * 55)
 
-speeeed=float(input("Enter speed (km/h): "))
-speed = speeeed/3.6
+speeeeed = float(input("\nEnter speed (km/h): "))
+speed = speeeeed / 3.6
 
-print("\nRoad conditions")
-print("1.Dry")
-print("2.Wet")
-print("3.Snow")
-print("4.Ice")
+print("\nRoad Conditions")
+print("-" * 20)
+print("1. Dry")
+print("2. Wet")
+print("3. Snow")
+print("4. Ice")
 
-road=int(input("\nSelect road condition: "))
+road = int(input("\nSelect road condition: "))
 
 mu = 0
 
@@ -28,19 +31,20 @@ else:
     print("Invalid road condition")
     exit()
 
-GRAVITY=9.81
+GRAVITY = 9.81
 
-braking_distance = (speed ** 2)/(2 * mu * GRAVITY)
+braking_distance = (speed ** 2) / (2 * mu * GRAVITY)
 
-print("\nDriver conditions")
-print("1.Alert")
-print("2.Average")
-print("3.Fatigued")
-print("4.Distracted")
+print("\nDriver Conditions")
+print("-" * 20)
+print("1. Alert")
+print("2. Average")
+print("3. Fatigued")
+print("4. Distracted")
 
-driver=int(input("\nSelect driver condition: "))
+driver = int(input("\nSelect driver condition: "))
 
-rxn_time=0
+rxn_time = 0
 
 if driver == 1:
     rxn_time = 0.8
@@ -58,6 +62,12 @@ reaction_distance = speed * rxn_time
 
 stopping_distance = braking_distance + reaction_distance
 
-print(f"\n{'Estimated reaction distance':<30}: {reaction_distance:.2f} m")
+print("\n" + "=" * 55)
+print("               STOPPING DISTANCE REPORT")
+print("=" * 55)
+
+print(f"{'Estimated reaction distance':<30}: {reaction_distance:.2f} m")
 print(f"{'Estimated braking distance':<30}: {braking_distance:.2f} m")
-print(f"{'Total stopping distance':<30}: {stopping_distance:.2f} m\n")
+print(f"{'Total stopping distance':<30}: {stopping_distance:.2f} m")
+
+print("=" * 55)
