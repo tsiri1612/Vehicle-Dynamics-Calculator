@@ -6,11 +6,13 @@ A Python project exploring automotive engineering concepts through practical veh
 ✅ Reaction Distance Calculator
 ✅ Total Stopping Distance Calculator
 ✅ Power to Weight Ratio
+✅ Engine RPM Calculator
 
 ## Planned Features
-- Gear Ratio Calculator
-- Engine RPM Calculator
 - Aerodynamic Drag Calculator
+- Fuel Economy Calculator
+- Weight Transfer
+- Cornering Speed
 
 ## How to Run
 
