@@ -7,9 +7,9 @@ A Python project exploring automotive engineering concepts through practical veh
 ✅ Total Stopping Distance Calculator
 ✅ Power to Weight Ratio
 ✅ Engine RPM Calculator
+✅ Aerodynamic Drag Calculator
 
 ## Planned Features
-- Aerodynamic Drag Calculator
 - Fuel Economy Calculator
 - Weight Transfer
 - Cornering Speed
