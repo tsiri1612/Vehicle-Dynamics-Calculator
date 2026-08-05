@@ -1,11 +1,14 @@
 # Calculates Aerodynamic Drag Force of Vehicle
+
+from data.vehicle_database import cars
+
 AIR_DENSITY = 1.225  #kg/m³ 
 
 print("\n" + "=" * 55)
 print("              AERODYNAMIC DRAG CALCULATOR")
 print("=" * 55)
 
-cars = {
+'''cars = {
     # HATCHBACKS
     "Maruti Suzuki Swift": {"cd": 0.32, "area": 2.05},
     "Maruti Suzuki Baleno": {"cd": 0.31, "area": 2.08},
@@ -65,7 +68,7 @@ cars = {
     "Mahindra XEV 9e": {"cd": 0.26, "area": 2.50},
     "Tesla Model 3": {"cd": 0.23, "area": 2.22},
     "Tesla Model S": {"cd": 0.208, "area": 2.34}
-}
+}'''
 
 vehicle = input("Enter vehicle name: ").strip()
 
@@ -97,8 +100,13 @@ print("\n" + "=" * 55)
 print("                       RESULTS")
 print("=" * 55)
 
-print(f"\nAerodynamic Drag Force: {drag_force:.2f} N")
+if found:
+    print(f"\nVehicle: {name}")
+else:
+    print(f"\nVehicle: {vehicle}")
 
+print(f"Speed: {speed_kmh} km/h")
+
+print(f"Aerodynamic Drag Force: {drag_force:.2f} N")
 drag_power = drag_force * speed_ms
-
 print(f"Drag Power: {drag_power / 745.7:.2f} hp\n")
