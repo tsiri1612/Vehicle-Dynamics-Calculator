@@ -1,0 +1,1 @@
+# Shared vehicle data package.

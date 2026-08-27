@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}Power-to-Weight Ratio Calculator{% endblock %}
+{% block content %}
+
+<section class="page">
+  <div class="container">
+    <div class="page-head">
+      <span class="section-tag">/ POWER-TO-WEIGHT</span>
+      <h1>Power-to-Weight Ratio Calculator</h1>
+      <p>Horsepower per tonne and kilograms per horsepower from engine power and vehicle weight.</p>
+      <a class="link-source" href="{{ source }}" target="_blank" rel="noopener">Python source on GitHub &nearr;</a>
+    </div>
+
+    <div class="page-grid">
+      <form class="panel form" method="post">
+        <h2>INPUTS</h2>
+
+        <label>Engine power (hp)
+          <input type="number" step="any" min="0" name="power" value="{{ form.power }}" required placeholder="200">
+        </label>
+
+        <label>Vehicle weight (kg)
+          <input type="number" step="any" min="0" name="weight" value="{{ form.weight }}" required placeholder="1500">
+        </label>
+
+        <button class="btn btn-accent" type="submit">Calculate</button>
+      </form>
+
+      <div class="panel results">
+        <h2>RESULTS</h2>
+        {% if error %}
+          <p class="error">{{ error }}</p>
+        {% endif %}
+        {% if results %}
+          <p class="result-vehicle">{{ results.vehicle }}</p>
+          <div class="gauge">
+            <span class="gauge-value">{{ results.primary_value }}</span>
+            <span class="gauge-unit">{{ results.primary_unit }}</span>
+          </div>
+          <p class="gauge-label">{{ results.primary_label }}</p>
+          <div class="result-grid">
+            {% for item in results.rows %}
+            <div class="result-row">
+              <span class="result-label">{{ item.label }}</span>
+              <span class="result-value">{{ item.value }} <small>{{ item.unit }}</small></span>
+            </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <p class="muted">No calculation yet. Fill in the inputs and hit Calculate.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

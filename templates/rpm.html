@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Engine RPM Calculator{% endblock %}
+{% block content %}
+
+<section class="page">
+  <div class="container">
+    <div class="page-head">
+      <span class="section-tag">/ ENGINE RPM</span>
+      <h1>Engine RPM Calculator</h1>
+      <p>Wheel and engine RPM from vehicle speed, tyre diameter, gear ratio and final drive (differential) ratio.</p>
+      <a class="link-source" href="{{ source }}" target="_blank" rel="noopener">Python source on GitHub &nearr;</a>
+    </div>
+
+    <div class="page-grid">
+      <form class="panel form" method="post">
+        <h2>INPUTS</h2>
+
+        <label>Vehicle speed (km/h)
+          <input type="number" step="any" min="0" name="speed" value="{{ form.speed }}" required placeholder="100">
+        </label>
+
+        <label>Tyre diameter (inches)
+          <input type="number" step="any" min="0" name="tyre" value="{{ form.tyre }}" required placeholder="24">
+        </label>
+
+        <div class="field-row">
+          <label>Gear ratio
+            <input type="number" step="any" min="0" name="gear" value="{{ form.gear }}" required placeholder="1.00">
+          </label>
+          <label>Final drive ratio
+            <input type="number" step="any" min="0" name="final_drive" value="{{ form.final_drive }}" required placeholder="3.50">
+          </label>
+        </div>
+
+        <button class="btn btn-accent" type="submit">Calculate</button>
+      </form>
+
+      <div class="panel results">
+        <h2>RESULTS</h2>
+        {% if error %}
+          <p class="error">{{ error }}</p>
+        {% endif %}
+        {% if results %}
+          <p class="result-vehicle">{{ results.vehicle }}</p>
+          <div class="gauge">
+            <span class="gauge-value">{{ results.primary_value }}</span>
+            <span class="gauge-unit">{{ results.primary_unit }}</span>
+          </div>
+          <p class="gauge-label">{{ results.primary_label }}</p>
+          <div class="result-grid">
+            {% for item in results.rows %}
+            <div class="result-row">
+              <span class="result-label">{{ item.label }}</span>
+              <span class="result-value">{{ item.value }} <small>{{ item.unit }}</small></span>
+            </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <p class="muted">No calculation yet. Fill in the inputs and hit Calculate.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

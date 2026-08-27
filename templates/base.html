@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Corsa Studio{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="/" class="logo">
+        <span class="logo-name">Corsa <em>Studio</em></span>
+      </a>
+      <nav class="nav">
+        <a href="/">Home</a>
+        <a href="/#calculators">Calculators</a>
+        <a class="btn btn-ghost btn-sm" href="{{ github }}" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-block">
+        <p class="footer-brand">Corsa Studio</p>
+        <p class="footer-sub">Built in India. Inspired by Italy. Focused on performance.</p>
+      </div>
+      <div class="footer-block">
+        <p class="footer-sub">Open-source automotive engineering tools powered by Python and built for enthusiasts, racers, and curious engineers.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

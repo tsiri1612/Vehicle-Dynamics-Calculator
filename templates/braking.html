@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}Braking Distance Calculator{% endblock %}
+{% block content %}
+
+<section class="page">
+  <div class="container">
+    <div class="page-head">
+      <span class="section-tag">/ BRAKING</span>
+      <h1>Braking &amp; Stopping Distance</h1>
+      <p>Estimates reaction, braking and total stopping distance for a given speed, road surface and driver condition.</p>
+      <a class="link-source" href="{{ source }}" target="_blank" rel="noopener">Python source on GitHub &nearr;</a>
+    </div>
+
+    <div class="page-grid">
+      <form class="panel form" method="post">
+        <h2>INPUTS</h2>
+
+        <label>Vehicle speed (km/h)
+          <input type="number" step="any" min="0" name="speed" value="{{ form.speed }}" required placeholder="80">
+        </label>
+
+        <label>Road condition
+          <select name="road">
+            {% for key, (label, _) in roads.items() %}
+            <option value="{{ key }}" {{ 'selected' if form.road == key|string }}>{{ label }}</option>
+            {% endfor %}
+          </select>
+        </label>
+
+        <label>Driver condition
+          <select name="driver">
+            {% for key, (label, _) in drivers.items() %}
+            <option value="{{ key }}" {{ 'selected' if form.driver == key|string }}>{{ label }}</option>
+            {% endfor %}
+          </select>
+        </label>
+
+        <button class="btn btn-accent" type="submit">Calculate</button>
+      </form>
+
+      <div class="panel results">
+        <h2>RESULTS</h2>
+        {% if error %}
+          <p class="error">{{ error }}</p>
+        {% endif %}
+        {% if results %}
+          <p class="result-vehicle">{{ results.vehicle }}</p>
+          <div class="gauge">
+            <span class="gauge-value">{{ results.primary_value }}</span>
+            <span class="gauge-unit">{{ results.primary_unit }}</span>
+          </div>
+          <p class="gauge-label">{{ results.primary_label }}</p>
+          <div class="result-grid">
+            {% for item in results.rows %}
+            <div class="result-row">
+              <span class="result-label">{{ item.label }}</span>
+              <span class="result-value">{{ item.value }} <small>{{ item.unit }}</small></span>
+            </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <p class="muted">No calculation yet. Fill in the inputs and hit Calculate.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
