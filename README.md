@@ -26,14 +26,5 @@ python -m calculators.braking
 python -m calculators.power_to_weight_ratio
 python -m calculators.rpm_calculator
 ```
-
-## Deploy to Render
-
-1. Push this repo to GitHub
-2. Go to render.com → New Web Service
-3. Connect your repo
-4. Build: `pip install -r requirements.txt`
-5. Start: `gunicorn app:app`
-
 ## Author
 Siri Tatiparthi
